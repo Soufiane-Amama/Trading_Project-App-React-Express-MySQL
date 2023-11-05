@@ -5,7 +5,7 @@ import EmailConfirmation from '../Confirmation/EmailConfirmation';
 import { DataContext } from '../context/DataContext';
 
 const PassRecovery = () => {
-  const { email, setEmail } = useContext(DataContext);
+  const { email, setEmail, url } = useContext(DataContext);
 
   const [emailError, setEmailError] = useState("");
   const [accept, setAccept] = useState(false);
@@ -19,7 +19,7 @@ const PassRecovery = () => {
 
       try {
         const user = { email };
-        const response = await fetch('/recovery', {
+        const response = await fetch(`${url}/recovery`, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user)

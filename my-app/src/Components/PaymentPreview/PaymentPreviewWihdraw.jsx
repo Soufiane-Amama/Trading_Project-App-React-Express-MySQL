@@ -12,7 +12,13 @@ import Cookies from "js-cookie"
 
 const PaymentPreviewWihdraw = () => {
     const [accept, setAccept] = useState(false);
-    const { setModalOpen, bank, amount, setAmount, userId, setUserId, setFirstName, setFatherName } = useContext(DataContext);
+    const { setModalOpen,  bank,
+            amount, setAmount, 
+            userId, setUserId, 
+            setFirstName, setFatherName,
+            url 
+          } = useContext(DataContext);
+
     const [error, setError] = useState("");
 
 
@@ -43,7 +49,7 @@ const PaymentPreviewWihdraw = () => {
         setAccept(true);
         
           try {
-            const response = await fetch('/withdraw', {
+            const response = await fetch(`${url}/withdraw`, {
               method: 'POST',
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ amount, bank, userId })

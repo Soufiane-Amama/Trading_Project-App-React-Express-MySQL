@@ -1,8 +1,9 @@
 import styles from "./LogIn.module.css"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Cookies from "js-cookie";
+import { DataContext } from "../context/DataContext";
 
 
 const LogIn = () => {
@@ -13,6 +14,8 @@ const LogIn = () => {
   const [accept, setAccept] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const { url } = useContext(DataContext);
+
   const history = useHistory();
 
 
@@ -22,7 +25,7 @@ const LogIn = () => {
 
       try {
         const user = { email, password };
-        const response = await fetch('/login', {
+        const response = await fetch(`${url}/login`, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user)

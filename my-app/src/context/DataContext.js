@@ -3,6 +3,8 @@ const { createContext, useState } = require("react")
 export const DataContext = createContext()
 
 const DataProvider = ({ children }) => {
+    // URL Server 
+  const [url, setUrl] = useState("https://trading-project-server.vercel.app")
     // Email Data
     const [email, setEmail] = useState("");
 
@@ -34,6 +36,7 @@ const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider value={{ 
+        url, setUrl,
         email, setEmail,  
         isModalOpen, setModalOpen,  
         bank, setBank,  

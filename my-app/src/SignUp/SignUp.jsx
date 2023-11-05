@@ -11,7 +11,7 @@ const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [fatherName, setFatherName] = useState("");
   const [lastName, setLastName] = useState("");
-  const { phoneNumber, valid, setAcceptSend, checkbox1Checked, setCheckbox1Checked } = useContext(DataContext);
+  const { phoneNumber, valid, setAcceptSend, checkbox1Checked, setCheckbox1Checked, url } = useContext(DataContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +46,7 @@ const SignUp = () => {
     if (isPasswordValid && valid) {
       try {
         const user = { firstName, fatherName, lastName, phoneNumber, email, password, confirmPassword };
-        const response = await fetch('/register', {
+        const response = await fetch(`${url}/register`, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user)

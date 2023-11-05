@@ -5,7 +5,7 @@ import { DataContext } from "../context/DataContext";
 
 
 const ChangePassword = () => {
-    const { email } = useContext(DataContext);
+    const { url, email } = useContext(DataContext);
     const [changePassword, setChangePassword] = useState("");
     const [accept, setAccept] = useState(false);
 
@@ -26,7 +26,7 @@ const ChangePassword = () => {
     
           try {
             const user = { changePassword, email };
-            const response = await fetch('/changePassword', {
+            const response = await fetch(`${url}/changePassword`, {
               method: 'POST',
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(user)

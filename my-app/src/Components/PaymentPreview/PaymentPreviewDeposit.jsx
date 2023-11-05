@@ -10,7 +10,12 @@ import Cookies from "js-cookie"
 
 
 const PaymentPreviewDeposit = () => {
-    const { setModalOpen, bank, amount, setAmount, userId, setUserId, setFirstName, setFatherName } = useContext(DataContext);
+    const { setModalOpen, bank, 
+            amount, setAmount, 
+            userId, setUserId, 
+            setFirstName, setFatherName, 
+            url 
+          } = useContext(DataContext);
 
     const history = useHistory();
 
@@ -42,7 +47,7 @@ const PaymentPreviewDeposit = () => {
       e.preventDefault();
       
         try {
-          const response = await fetch('/deposit', {
+          const response = await fetch(`${url}/deposit`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ amount, bank, userId })

@@ -8,9 +8,8 @@ import { DataContext } from "../../context/DataContext";
 
 
 const Banks = ({ changing }) => {
-    const { isModalOpen, setModalOpen, amount, setAmount, toSwitch, setToSwitch, checkbox2Checked, setCheckbox2Checked, checkbox3Checked, setCheckbox3Checked } = useContext(DataContext);
+    const { isModalOpen, setModalOpen, amount, setAmount, setToSwitch, checkbox2Checked, setCheckbox2Checked, checkbox3Checked, setCheckbox3Checked } = useContext(DataContext);
     const [accept, setAccept] = useState(false);
-    const [error, setError] = useState("");
     const [shouldReload, setShouldReload] = useState(false);
 
     const history = useHistory();

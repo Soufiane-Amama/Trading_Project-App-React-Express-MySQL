@@ -1,7 +1,8 @@
 import styles from "./EmailConfirmation.module.css";
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import ChangePassword from "../ChangePassword/ChangePassword";
+import { DataContext } from "../context/DataContext";
 
 
 const EmailConfirmation = ({ redirectToChange }) => {
@@ -16,6 +17,8 @@ const EmailConfirmation = ({ redirectToChange }) => {
   const [acceptTwo, setAcceptTwo] = useState(false);
 
   const [changePass, setChangePass] = useState(undefined);
+
+  const { url } = useContext(DataContext);
 
   const history = useHistory();
 
@@ -41,7 +44,7 @@ const EmailConfirmation = ({ redirectToChange }) => {
     if (acceptOne && valid) {
       (async () => {
         try {
-          const response = await fetch(`/confirmation`, {
+          const response = await fetch(`${url}/confirmation`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ inputValues })
@@ -83,7 +86,7 @@ const EmailConfirmation = ({ redirectToChange }) => {
     if (acceptTwo && valid) {
       (async () => {
         try {
-          const response = await fetch(`/confirm`, {
+          const response = await fetch(`${url}/confirm`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ inputValues })

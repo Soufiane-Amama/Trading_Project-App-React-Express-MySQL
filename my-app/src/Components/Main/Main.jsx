@@ -8,8 +8,8 @@ import { DataContext } from "../../context/DataContext";
 
 
 const Main = () => {
-  const { setUserId, userId } = useContext(DataContext);
-  const { data: totalBalance, loading, error, noContent } = useFetch(`/total/${userId}`);
+  const { url, userId } = useContext(DataContext);
+  const { data: totalBalance, loading } = useFetch(`${url}/total/${userId}`);
 
   return (
     <div className={styles.boxContent}>

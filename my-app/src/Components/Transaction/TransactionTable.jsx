@@ -9,10 +9,10 @@ import { DataContext } from "../../context/DataContext";
 
 
 const TransactionTable = ({ hide }) => {
-    const { setUserId, userId, shouldReload, setShouldReload, checkbox4Checked, setCheckbox4Checked } = useContext(DataContext);
+    const { url, setUserId, userId, shouldReload, setShouldReload, checkbox4Checked, setCheckbox4Checked } = useContext(DataContext);
     const [disabled, setDisabled] = useState(true);
     const [processing, setProcessing] = useState('processing');
-    const { data: transactions, loading, error, noContent } = useFetch(`/transactions/${userId}`);
+    const { data: transactions, loading, error, noContent } = useFetch(`${url}/transactions/${userId}`);
     
     
     useEffect(() => {
@@ -33,7 +33,7 @@ const TransactionTable = ({ hide }) => {
       const deleteTransaction = async (e) => {
         const id = e.target.value;
 
-        const response = await fetch(`/transaction/${id}`, {
+        const response = await fetch(`${url}/transaction/${id}`, {
           method: 'DELETE',
         });
             if (response.ok) {

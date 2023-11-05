@@ -1,6 +1,7 @@
 import styles from "./ControlBoard.module.css";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Dashboard from "./Dashboard";
+import { DataContext } from "../context/DataContext";
 
 
 
@@ -11,6 +12,8 @@ const ControlBoard = () => {
     const [accept, setAccept] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [openDashboard, setOpenDashboard] = useState(false);
+
+    const { url } = useContext(DataContext);
     
     
     
@@ -20,7 +23,7 @@ const ControlBoard = () => {
 
         try {
           const admin = { username, password };
-          const response = await fetch('/admin-login', {
+          const response = await fetch(`${url}/admin-login`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(admin)

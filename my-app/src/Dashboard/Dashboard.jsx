@@ -6,14 +6,15 @@ import Cookies from "js-cookie";
 import DeleteIcon from "./Delete.svg";
 
 const Dashboard = () => {
-  const { data: transactions, loading, error, noContent } = useFetch(`/transactions`);
   const {
           shouldReload, setShouldReload, 
           checkbox1Checked, setCheckbox1Checked, 
           checkbox2Checked, setCheckbox2Checked, 
           checkbox3Checked, setCheckbox3Checked, 
-          checkbox4Checked, setCheckbox4Checked 
+          checkbox4Checked, setCheckbox4Checked,
+          url
         } = useContext(DataContext);
+  const { data: transactions, loading, error, noContent } = useFetch(`${url}/transactions`);
 
   const [showOperations, setShowOperations] = useState(false);
   const [hiddenRows, setHiddenRows] = useState([]);
@@ -89,7 +90,7 @@ const Dashboard = () => {
     const transactionId = e.target.value;
     const decision = 'Rejected';
 
-    const response = await fetch(`/transaction-rejected`, {
+    const response = await fetch(`${url}/transaction-rejected`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ transactionId, decision })
@@ -108,7 +109,7 @@ const Dashboard = () => {
     const decision = 'Accepted';
     const transactionType = 'deposit';
 
-    const response = await fetch(`/accept-withdrawal-deposit`, {
+    const response = await fetch(`${url}/accept-withdrawal-deposit`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ transactionId, decision, transactionType })
@@ -128,7 +129,7 @@ const Dashboard = () => {
     const decision = 'Accepted';
     const transactionType = 'withdrawal';
 
-    const response = await fetch(`/accept-withdrawal-deposit`, {
+    const response = await fetch(`${url}/accept-withdrawal-deposit`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ transactionId, decision, transactionType })
