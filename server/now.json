@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "./index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
+    ],
+    "env": {
+      "DB_HOST": "bfrsdqae49isp3p708gx-mysql.services.clever-cloud.com",
+      "DB_USER": "uhqvjhmko5dq1s1l",
+      "DB_PASSWORD": "VhGISCDySsyrLTRC8NZV",
+      "DB_NAME": "bfrsdqae49isp3p708gx",
+      
+      "MAIL_USER": "soufianeamama70@gmail.com",
+      "MAIL_PASS": "xrnzpkppcswwlxiq"
+    }
+}
+
