@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://trading-project-app-react-express-my-sql-msrr.vercel.app',
+  origin: 'https://trading-max-app.vercel.app/',
   credentials: true
 }));
 
