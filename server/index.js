@@ -20,7 +20,7 @@ app.use(cors({
   credentials: true
 }));
 
-//  app.use(cors({
+//  app.use(cors({ 
 //   origin: 'https://trading-project-app-react-express-my-sql.vercel.app/',
 //   methods: ['GET', 'POST', 'DELETE', 'PUT'],
 //   allowedHeaders: ['Content-Type', 'Authorization'],
