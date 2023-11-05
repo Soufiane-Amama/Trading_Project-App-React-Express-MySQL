@@ -22,7 +22,7 @@ const LogIn = () => {
 
       try {
         const user = { email, password };
-        const response = await fetch('https://trading-max-soufiane-amama.vercel.app/login', {
+        const response = await fetch('https://trading-project-server.vercel.app/login', {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user)
