@@ -15,11 +15,16 @@ app.use(express.json());
 
 app.use(cors());
 
- app.use(cors({
-  origin: 'https://trading-project-app-react-express-my-sql.vercel.app/',
-  methods: ['GET', 'POST', 'DELETE', 'PUT'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+app.use(cors({
+  origin: 'https://trading-project-app-react-express-my-sql-msrr.vercel.app',
+  credentials: true
 }));
+
+//  app.use(cors({
+//   origin: 'https://trading-project-app-react-express-my-sql.vercel.app/',
+//   methods: ['GET', 'POST', 'DELETE', 'PUT'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
 
 // app.use(cors({
 //   origin: true
